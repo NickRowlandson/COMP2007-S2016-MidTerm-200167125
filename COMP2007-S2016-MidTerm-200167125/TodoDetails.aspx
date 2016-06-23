@@ -16,8 +16,10 @@
                     <asp:TextBox runat="server" CssClass="form-control" ID="TodoNotesTextBox" placeholder="Todo Notes" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="CompletedCheckBox">Completed</label>
-
+                    <label class="control-label" for="CompletedCheckBox">Completed </label>
+                    <asp:CheckBox ID="CheckBox"
+                        runat="server"
+                        AutoPostBack="true" />
                 </div>
                 <div class="text-right">
                     <asp:Button Text="Cancel" ID="CancelButton" CssClass="btn btn-warning btn-lg" runat="server" UseSubmitBehaviour="false" CausesValidation="false" OnClick="CancelButton_Click" />

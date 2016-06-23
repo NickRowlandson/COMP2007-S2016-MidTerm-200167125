@@ -54,6 +54,16 @@ namespace COMP2007_S2016_MidTerm_200167125
                     TodoNameTextBox.Text = updatedTodo.TodoName;
                     TodoNotesTextBox.Text = updatedTodo.TodoNotes;
                 }
+
+                var completed = updatedTodo.Completed;
+                if(completed == true) 
+                {
+                    CheckBox.Checked = true;
+                }
+                else
+                {
+                    CheckBox.Checked = false;
+                }
             }
         }
 
@@ -84,7 +94,7 @@ namespace COMP2007_S2016_MidTerm_200167125
             // Use Ef to connect to the server
             using (TodoConnection db = new TodoConnection())
             {
-                // Use the student model to create a new todo object and also save a new record
+                // Use the todo model to create a new todo object and also save a new record
                 Todo newTodo = new Todo();
 
                 int TodoID = 0;
@@ -100,6 +110,14 @@ namespace COMP2007_S2016_MidTerm_200167125
                                   select todo).FirstOrDefault();
                 }
 
+                if (CheckBox.Checked == true)
+                {
+                    newTodo.Completed = true;
+                }
+                else
+                {
+                    newTodo.Completed = false;
+                }
 
                 // add data to the new todo record
                 newTodo.TodoName = TodoNameTextBox.Text;

@@ -185,5 +185,52 @@ namespace COMP2007_S2016_MidTerm_200167125
             this.GetTodos();
         }
 
+        protected void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // store which row was clicked
+            GridViewRow Row = ((GridViewRow)((CheckBox)sender).Parent.Parent);
+            int TodoID = Convert.ToInt32(TodoGridview.DataKeys[Row.RowIndex].Value.ToString());
+
+            var checkboxChecked = e.ToString();
+
+            if(checkboxChecked == "true")
+            {
+                // Use Ef to connect to the server
+                using (TodoConnection db = new TodoConnection())
+                {
+                    // Use the todo model to create a new todo object and also save a new record
+                    Todo newTodo = new Todo();
+
+                    // get the current todo from the EF database
+                    newTodo = (from todo in db.Todos
+                                where todo.TodoID == TodoID
+                                select todo).FirstOrDefault();
+                    
+                    newTodo.Completed = true;
+
+                    // save our changes
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                // Use Ef to connect to the server
+                using (TodoConnection db = new TodoConnection())
+                {
+                    // Use the todo model to create a new todo object and also save a new record
+                    Todo newTodo = new Todo();
+
+                    // get the current todo from the EF database
+                    newTodo = (from todo in db.Todos
+                               where todo.TodoID == TodoID
+                               select todo).FirstOrDefault();
+
+                    newTodo.Completed = false;
+
+                    // save our changes
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
