@@ -29,7 +29,7 @@
                                 <asp:CheckBox ID="CheckBox"
                                     Text=""
                                     runat="server"
-                                    AutoPostBack="true" OnCheckedChanged="CheckBox_CheckedChanged" />
+                                    AutoPostBack="true" OnCheckedChanged="CheckBox_CheckedChanged"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/TodoDetails.aspx.cs"
