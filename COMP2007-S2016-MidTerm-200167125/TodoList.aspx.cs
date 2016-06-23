@@ -74,7 +74,7 @@ namespace COMP2007_S2016_MidTerm_200167125
             int selectedRow = e.RowIndex;
 
             // get the selected todo id using the grids data key collection
-            int TodoID = Convert.ToInt32(TodoGridview.DataKeys[selectedRow].Values["StudentID"]);
+            int TodoID = Convert.ToInt32(TodoGridview.DataKeys[selectedRow].Values["TodoID"]);
 
             // use EF to find the selected todo in the DB and remove it
             using (TodoConnection db = new TodoConnection())
